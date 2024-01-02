@@ -1,0 +1,42 @@
+[
+    {
+        "name": "jpwebdevelopers",
+        "address": "Patel Nagar, Malout, Punjab 152107",
+        "website": "jpwebdevelopers.in",
+        "phone_number": "096464 71161",
+        "reviews_count": "33",
+        "reviews_average": "5.0"
+    },
+    {
+        "name": "Digi Banters Pvt Ltd",
+        "address": "Old, Court Road, near BSNL Exchange, Sarabha Nagar, Malout, Punjab 152107",
+        "website": "digibanters.com",
+        "phone_number": "062804 12231",
+        "reviews_count": "9",
+        "reviews_average": "4.2"
+    },
+    {
+        "name": "Pentasoft Professional",
+        "address": "2275, Near Hanuman Chowk, Mata Rani Wali Gali, India, Bathinda, Punjab 151001",
+        "website": "pentasoftprofessional.in",
+        "phone_number": "082839 94938",
+        "reviews_count": "85",
+        "reviews_average": "4.5"
+    },
+    {
+        "name": "Technopedia Solutions: web designing, software, Java, Python, Digital marketing, Full stack Developer",
+        "address": "2nd floor, singla complex, 100 Feet Rd, near ghore wala chowk, Bathinda, Punjab 151001",
+        "website": "technopediasolutions.com",
+        "phone_number": "090238 42905",
+        "reviews_count": "85",
+        "reviews_average": "4.8"
+    },
+    {
+        "name": "JD Web Services",
+        "address": "Jd Web Services, Chak Road, near Maan Chowk, Sarngpusa Mohalla, Sri Muktsar Sahib, Muktsar Rural, Punjab 152026",
+        "website": "jdwebservices.com",
+        "phone_number": "090416 19321",
+        "reviews_count": "17",
+        "reviews_average": "5.0"
+    }
+]
