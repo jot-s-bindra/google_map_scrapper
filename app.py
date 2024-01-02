@@ -136,9 +136,9 @@ def scrape_google_maps(search_for, total):
     
     return business_list.business_list
 
-@app.route('/scrape_google_maps')
-def scrape_endpoint():
-    search_query = "web developer in punjab" 
+@app.route('/scrape_google_maps/<path:job_profile>/<path:city>')
+def scrape_endpoint(job_profile, city):
+    search_query = f"{job_profile} in {city}"
     total_to_scrape = 1
     fetched_data = scrape_google_maps(search_query, total_to_scrape)
 
