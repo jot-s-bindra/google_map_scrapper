@@ -193,7 +193,7 @@ def scrape_bing_maps(search_query, total):
     
 
 
-@app.route('/scrape_maps/<path:job_profile>/<path:city>/<int:total>')
+@app.route('/scrap/<path:job_profile>/<path:city>/<int:total>')
 def scrape_maps(job_profile, city, total):
     search_query = f"{job_profile} in {city}"
     fetched_data = []
