@@ -37,7 +37,7 @@ def scrape_google_maps(search_query, total):
 
         previously_counted = 0
         while True:
-            page.mouse.wheel(0, 10000)
+            page.mouse.wheel(0, 30000)
             page.wait_for_timeout(3000)
 
             if (
@@ -133,7 +133,7 @@ def scrape_bing_maps(search_query, total):
     business_list = BusinessList()
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         page.goto("https://www.bing.com/maps", timeout=60000)
@@ -205,9 +205,9 @@ def scrape_maps(job_profile, city, total):
         fetched_data = scrape_google_maps(search_query, total)
         how_many_printed = len(fetched_data)
 
-    if how_many_printed < total:
-        bing_data = scrape_bing_maps(search_query, total - how_many_printed)
-        fetched_data.extend(bing_data)
+    # if how_many_printed < total:
+    #     bing_data = scrape_bing_maps(search_query, total - how_many_printed)
+    #     fetched_data.extend(bing_data)
 
     return jsonify(fetched_data)
 
