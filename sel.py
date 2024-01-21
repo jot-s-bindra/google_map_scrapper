@@ -123,6 +123,7 @@ def scrape_google_maps(search_query, total):
                 business.reviews_average = ""
                 business.reviews_count = ""
 
+        
             business_list.business_list.append(business)
 
         browser.close()
@@ -194,6 +195,12 @@ def scrape_bing_maps(search_query, total):
     return [asdict(business) for business in business_list.business_list]
     
 
+def custom_sort(business):
+    # Define a custom sorting key function
+    if all(attr is not None for attr in asdict(business).values()):
+        return 0  # Entries with all information should come first
+    else:
+        return 1  # Entries without all information should come later
 
 @app.route('/scrape_maps/<path:job_profile>/<path:city>/<int:total>')
 def scrape_maps(job_profile, city, total):
@@ -209,8 +216,10 @@ def scrape_maps(job_profile, city, total):
     #     bing_data = scrape_bing_maps(search_query, total - how_many_printed)
     #     fetched_data.extend(bing_data)
 
-    return jsonify(fetched_data)
+    # Sort the data using the custom_sort function
+    fetched_data.sort(key=custom_sort)
 
+    return jsonify(fetched_data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5002, debug=True)
