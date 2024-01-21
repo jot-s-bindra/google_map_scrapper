@@ -1,16 +1,22 @@
 from flask import Flask, jsonify
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
 import urllib.parse
 
 
-
 app = Flask(__name__)
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--disable-software-rasterizer')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 
 
 @app.route('/scrap/<position>/<city>/<count>', methods=['GET'])
@@ -24,7 +30,8 @@ def scrap(position, city, count):
     link = f"https://www.google.com/maps/search/{search_query_encoded}/"
     print(link)
 
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(options=chrome_options)
+
 
     start_time = time.time()
     time.sleep(1)
