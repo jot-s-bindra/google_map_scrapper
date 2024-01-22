@@ -30,6 +30,7 @@ def scrap(position, city, count):
     link = f"https://www.google.com/maps/search/{search_query_encoded}/"
     print(link)
 
+    # browser = webdriver.Chrome()
     browser = webdriver.Chrome(options=chrome_options)
 
 
@@ -42,19 +43,28 @@ def scrap(position, city, count):
     prev = len(a)
     while len(a) < count:
         print(len(a))
-        var = len(a)
         scroll_origin = ScrollOrigin.from_element(a[len(a)-1])
         time.sleep(0.4)
         action.scroll_from_origin(scroll_origin, 0, 1500).perform()
         # time.sleep(2)
         a = browser.find_elements(By.CLASS_NAME, "hfpxzc")
-        if (len(a) == prev):
-            time.sleep(1)
+        ct=0
+        flag=0
+        # if (len(a) == prev):
+        while(len(a)==prev):
+            ct+=1
+            if(ct>=10):
+                flag=1
+                break
             scroll_origin = ScrollOrigin.from_element(a[len(a)-1])
             action.scroll_from_origin(scroll_origin, 0, 1500).perform()
+            time.sleep(0.4)
             a = browser.find_elements(By.CLASS_NAME, "hfpxzc")
             if (len(a) >= (count*0.9)):
                 break
+        if flag:
+            break
+            
 
         if (time.time()-start_time > 100):
             print("Timout limit reached")
@@ -72,6 +82,7 @@ def scrap(position, city, count):
             phone = ele.find("span", class_='UsdlK').text
         except:
             print("Error")
+            continue
         try:
             url = ele.find("a", class_='lcr4fd')['href']
         except:
@@ -101,4 +112,4 @@ def scrap(position, city, count):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5551)
+    app.run(debug=True, port=5822)
